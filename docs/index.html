@@ -7,8 +7,8 @@
   <meta name="description" content="A little journey across a lake. A language for two. A letter for you." />
   <title>Mi sela ti · a language for two</title>
   <link rel="icon" href="./favicon.svg" />
-  <script type="module" crossorigin src="./assets/index-oz3EwA43.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-VgZB43MO.css">
+  <script type="module" crossorigin src="./assets/index-B-suunnK.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BmypHaDk.css">
 </head>
 <body>
   <canvas id="world" aria-label="A girl in a wooden boat on a sunset lake"></canvas>
@@ -41,20 +41,22 @@
       </div>
     </section>
     <section id="decoder" class="decoder screen" hidden aria-labelledby="fragment-title">
-      <div class="decoder-heading"><div><span class="eyebrow" id="fragment-count">LETTER FRAGMENT 01</span><h2 id="fragment-title">The first words</h2></div><button class="icon-button" id="listen-fragment" aria-label="Hear this fragment pronounced">♫</button></div>
-      <button id="fragment-glyphs" class="fragment-glyphs glyph" aria-label="Place this fragment in the keyboard"></button>
-      <div id="fragment-guide" class="fragment-guide"><span id="roman-fragment" hidden></span><button id="show-roman" class="text-button">Show pronunciation</button></div>
-      <p class="decoder-instruction" id="decoder-instruction">Tap the writing above to collect its words.</p>
-      <div class="translator">
-        <div class="language-row"><span id="source-label">SELA</span><button id="swap" class="icon-button" aria-label="Swap translation direction">⇄</button><span id="target-label">ENGLISH</span></div>
-        <label class="sr-only" for="translation-input">Words to translate</label>
-        <textarea id="translation-input" class="glyph" rows="2" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder=""></textarea>
-        <div class="input-tools"><button id="clear-input" class="text-button">Clear</button><button id="alphabet-toggle" class="text-button" aria-pressed="false">Latin letters</button><button id="translate" class="small-primary">Translate</button></div>
-        <div id="translation-result" class="translation-result" aria-live="polite"><span id="result-text">The meaning will appear here.</span><button id="speak-result" class="icon-button" aria-label="Pronounce the Sela words" hidden>♫</button></div>
-        <p id="unknown-notice" class="unknown-notice" hidden></p>
-        <div id="keyboard" aria-label="Sela character keyboard"></div>
+      <div id="floating-letter" class="floating-letter">
+        <div class="decoder-heading"><div><span class="eyebrow" id="fragment-count">LETTER FRAGMENT 01</span><h2 id="fragment-title">The first words</h2></div><button class="icon-button" id="listen-fragment" aria-label="Hear this fragment pronounced">♫</button></div>
+        <button id="fragment-glyphs" class="fragment-glyphs glyph" aria-label="Place this fragment in the keyboard"></button>
+        <div id="fragment-guide" class="fragment-guide"><button id="show-roman" class="text-button" aria-expanded="false">Show pronunciation</button><span class="copy-hint" aria-hidden="true">tap the writing to copy</span></div>
+        <span id="roman-fragment" class="roman-fragment" hidden></span>
       </div>
-      <div class="decoder-footer"><button id="dictionary-button" class="text-button">Wordbook</button><button id="collect" class="small-primary" hidden>Keep this piece</button><button id="close-workshop" class="text-button" hidden>Back to the lake</button></div>
+      <div id="keyboard-dock" class="keyboard-dock">
+        <p class="decoder-instruction" id="decoder-instruction">Tap the writing above, or use our keys.</p>
+        <div class="translator">
+          <div class="language-row"><div class="direction-labels"><span id="source-label">SELA</span><button id="swap" class="icon-button" aria-label="Swap translation direction">⇄</button><span id="target-label">ENGLISH</span></div><div class="input-options"><button id="alphabet-toggle" class="text-button" aria-pressed="false">Latin letters</button><button id="clear-input" class="text-button">Clear</button></div></div>
+          <div class="input-area"><label class="sr-only" for="translation-input">Words to translate</label><textarea id="translation-input" class="glyph" rows="1" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder=""></textarea><button id="translate" class="small-primary">Translate</button></div>
+          <div id="translation-result" class="translation-result" aria-live="polite"><div class="result-copy"><span id="result-text">The meaning will appear here.</span><p id="unknown-notice" class="unknown-notice" hidden></p></div><button id="speak-result" class="icon-button" aria-label="Pronounce the Sela words" hidden>♫</button></div>
+          <div id="keyboard" aria-label="Sela character keyboard"></div>
+        </div>
+        <div class="decoder-footer"><button id="dictionary-button" class="text-button">Wordbook</button><span class="keyboard-signature" aria-hidden="true">a language for two</span><button id="collect" class="small-primary" hidden>Keep this piece</button><button id="close-workshop" class="text-button" hidden>Back to the lake</button></div>
+      </div>
     </section>
     <section id="revelation" class="revelation screen" hidden>
       <span class="eyebrow">EVERY WORD BROUGHT YOU HERE</span>

@@ -4,9 +4,13 @@ A monthsary gift: a girl, a small wooden boat, a sunset lake, and a letter waiti
 
 The lake and character are rendered in Three.js. Six floating fragments stop the journey; collect the writing, translate it with the Sela keyboard, and keep each piece. When the letter is complete, its words gradually become English. The same custom characters then gather into a portrait.
 
+The rowboat has a hollow timber hull, curved plank seams, brass rowlocks, carved oars, a linen blanket, and a letter beside the candle lantern. The character wears the black shirt and yellow collar from the supplied photographs, with a swept hair part, ponytail, silver hoops, blinking eyes, and hands that follow the oar grips. The shoreline includes individually instanced willow leaves, reeds, rocks, and flowering lily pads. The water reflects the actual scene, with wave distortion, sunset glints, paddle ripples, and a trailing wake. Tapping nearby water makes a ripple.
+
+Paddling applies periodic thrust to a 115 kg boat-and-passenger model. Linear and quadratic water drag govern acceleration and coasting. Four wave samples drive damped buoyancy, pitch, and roll; the visible surface shares the simulation's wave definition. The simulation uses fixed 1/120-second steps. Hair and lantern motion use separate damped springs. This is a lightweight scene simulation, not a boating simulator.
+
 ## Play
 
-Open the [gift](https://greeeeggy.github.io/mi-sela-ti/) on a phone or computer. Tap **Take the boat**, then **Row onward**. Tap again to rest. At each fragment, tap the writing, then **Translate**, then **Keep this piece**. The first crossing is five seconds; later crossings are twenty seconds.
+Open the [gift](https://greeeeggy.github.io/mi-sela-ti/) on a phone or computer. Tap **Take the boat**, then **Row onward**. Tap again to rest. At each fragment, tap the writing, then **Translate**, then **Keep this piece**. Crossing lengths are measured by progress at cruising speed: the first uses five seconds of progress and later crossings use twenty. Initial acceleration adds a few seconds, and resting lets the boat coast.
 
 The menu offers gentler motion and eight-second crossings. Progress stays in the current browser. Sound starts after the first tap; the music button toggles the original piano-like soundtrack and water ambience.
 
@@ -24,7 +28,7 @@ Sela is a small, word-level constructed language, with English word order and a 
 
 `I love you` ↔ `mi sela ti`.
 
-The keyboard works in both directions and supports physical typing as well as touch keys. The **Latin letters** toggle shows the underlying spelling. The wordbook includes pronunciation buttons. Unknown words remain unchanged and are explicitly identified; this is a starter language, not an unrestricted English translator.
+The keyboard works in both directions and supports physical typing as well as touch keys. On phones the custom keyboard replaces the native text keyboard, keeping the original fragment pinned above it. Copying or typing never dismisses the fragment or moves the page. Pronunciation switches the same pinned words to their Latin spelling without expanding the card. Short landscape screens put the fragment beside the keyboard. The **Latin letters** toggle changes the input spelling display. The wordbook includes pronunciation buttons. Unknown words remain unchanged and are explicitly identified; this is a starter language, not an unrestricted English translator.
 
 Pronunciation is generated through the browser's speech synthesis with a phonetic guide. Available voices and their interpretation vary by device. `mi sela ti` is guided as **mee seh lah tee**. The browser's speech capability must be available for the speaker buttons to play.
 
@@ -67,8 +71,10 @@ The provided photographs were sampled locally into RGB grids in `public/portrait
 
 ## Verification
 
-- Five language tests check both directions, letter completeness, unique translations, contractions, and unknown words.
+- Five language tests check both directions, letter completeness, unique translations, contractions, and unknown words. Four physics tests check acceleration, coasting, anchoring, stable buoyancy, and equivalent movement at 30, 60, and 120 render frames per second.
 - `tools/check-browser.mjs` runs the full six-fragment journey in a 390 × 844 touch-enabled Chrome viewport, checks the keyboard and wordbook, verifies the pronunciation button's speech request, checks resume after reload, and captures desktop and phone screenshots.
+- `tools/check-layout.mjs` checks the longest real fragment at 320 × 568, 360 × 640, 390 × 844, 430 × 932, 844 × 390, and 1440 × 900. It copies the source, types and deletes a character, translates, toggles pronunciation, and checks that source, keys, and collection controls stay on screen without a scrolling decoder.
+- `tools/check-final.mjs` checks the published phone layout at twice the viewport pixel density and the portrait PNG download. Set `GIFT_URL` to the published address to check deployment.
 - The browser check verifies the UI request to speak. It does not certify the sound of a physical phone's installed voice or the performance of a particular phone.
 
 Reference documentation: [Three.js](https://threejs.org/docs/), [browser speech synthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis), [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
